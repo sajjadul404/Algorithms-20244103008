@@ -1,30 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void DFSRec(vector<vector<int>> &adj, vector<bool> &visited, int s)
+void bfs(vector<vector<int>>& adj, int s)
 {
-    visited[s] = true;
-    cout << s << " ";
+    queue<int> q;
+    vector<bool> visited(adj.size(), false);
 
-    for (int i : adj[s])
+    visited[s] = true;
+    q.push(s);
+
+    while (!q.empty())
     {
-        if (visited[i] == false)
+        int curr = q.front();
+        q.pop();
+
+        cout << curr << " ";
+
+        for (int x : adj[curr])
         {
-            DFSRec(adj, visited, i);
+            if (!visited[x])
+            {
+                visited[x] = true;
+                q.push(x);
+            }
         }
     }
 }
 
-void DFS(vector<vector<int>> &adj, int s)
+void addEdge(vector<vector<int>>& adj, int u, int v)
 {
-    vector<bool> visited(adj.size(), false);
-    DFSRec(adj, visited, s);
-}
-
-void addEdge(vector<vector<int>> &adj, int s, int t)
-{
-    adj[s].push_back(t);
-    adj[t].push_back(s); 
+    adj[u].push_back(v);
+    adj[v].push_back(u);
 }
 
 int main()
@@ -32,23 +38,15 @@ int main()
     int V = 5;
     vector<vector<int>> adj(V);
 
-    vector<vector<int>> edges = {
-        {1, 2},
-        {1, 0},
-        {2, 0},
-        {2, 3},
-        {2, 4}
-    };
+    addEdge(adj, 0, 1);
+    addEdge(adj, 0, 2);
+    addEdge(adj, 1, 3);
+    addEdge(adj, 1, 4);
+    addEdge(adj, 2, 4);
 
-    for (auto &e : edges)
-    {
-        addEdge(adj, e[0], e[1]);
-    }
+    cout << "BFS starting from 0 : ";
 
-    int s = 1;
-    cout << "DFS from source: " << s << endl;
-
-    DFS(adj, s);
+    bfs(adj, 0);
 
     return 0;
 }
