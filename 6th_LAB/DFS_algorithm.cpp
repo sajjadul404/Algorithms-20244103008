@@ -1,14 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void dfs(vector<vector<int>>& adj, int node, vector<bool>& visited)
+void dfs(vector<vector<int>>& adj, int node, vector<int>& visited)
 {
-    visited[node] = true;
+    visited[node] = 1;
     cout << node << " ";
 
     for(int x : adj[node])
     {
-        if(!visited[x])
+        if(visited[x] == 0)
         {
             dfs(adj, x, visited);
         }
@@ -45,7 +45,7 @@ int main()
     cout << "Enter starting node: ";
     cin >> start;
 
-    vector<bool> visited(V, false);
+    vector<int> visited(V, 0);
 
     cout << "DFS Traversal: ";
     dfs(adj, start, visited);
