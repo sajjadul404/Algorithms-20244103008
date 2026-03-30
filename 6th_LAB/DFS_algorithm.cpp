@@ -1,28 +1,16 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-void bfs(vector<vector<int>>& adj, int s)
+void dfs(vector<vector<int>>& adj, int node, vector<bool>& visited)
 {
-    queue<int> q;
-    vector<bool> visited(adj.size(), false);
+    visited[node] = true;
+    cout << node << " ";
 
-    visited[s] = true;
-    q.push(s);
-
-    while (!q.empty())
+    for(int x : adj[node])
     {
-        int curr = q.front();
-        q.pop();
-
-        cout << curr << " ";
-
-        for (int x : adj[curr])
+        if(!visited[x])
         {
-            if (!visited[x])
-            {
-                visited[x] = true;
-                q.push(x);
-            }
+            dfs(adj, x, visited);
         }
     }
 }
@@ -30,23 +18,37 @@ void bfs(vector<vector<int>>& adj, int s)
 void addEdge(vector<vector<int>>& adj, int u, int v)
 {
     adj[u].push_back(v);
-    adj[v].push_back(u);
+    adj[v].push_back(u); 
 }
 
 int main()
 {
-    int V = 5;
+    int V, E;
+
+    cout << "Enter number of vertices: ";
+    cin >> V;
+
+    cout << "Enter number of edges: ";
+    cin >> E;
+
     vector<vector<int>> adj(V);
 
-    addEdge(adj, 0, 1);
-    addEdge(adj, 0, 2);
-    addEdge(adj, 1, 3);
-    addEdge(adj, 1, 4);
-    addEdge(adj, 2, 4);
+    cout << "Enter edges (u v):\n";
+    for(int i = 0; i < E; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        addEdge(adj, u, v);
+    }
 
-    cout << "BFS starting from 0 : ";
+    int start;
+    cout << "Enter starting node: ";
+    cin >> start;
 
-    bfs(adj, 0);
+    vector<bool> visited(V, false);
+
+    cout << "DFS Traversal: ";
+    dfs(adj, start, visited);
 
     return 0;
 }
