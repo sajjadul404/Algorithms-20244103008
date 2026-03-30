@@ -6,15 +6,14 @@ void bfs(vector<vector<int>>& adj, int s, vector<bool>& visited)
     queue<int> q;
 
     visited[s] = true;
-
     q.push(s);
 
     while (!q.empty())
     {
         int curr = q.front();
-        q.pop(); 
+        q.pop();
 
-        cout << curr << " ";  
+        cout << curr << " ";
 
         for (int x : adj[curr])
         {
@@ -35,14 +34,22 @@ void addEdge(vector<vector<int>>& adj, int u, int v)
 
 int main()
 {
-    int V = 6; 
+    int V, E;
+    cout << "Enter number of vertices: ";
+    cin >> V;
+
+    cout << "Enter number of edges: ";
+    cin >> E;
+
     vector<vector<int>> adj(V);
 
-    addEdge(adj, 0, 1);
-    addEdge(adj, 0, 2);
-    addEdge(adj, 1, 3);
-
-    addEdge(adj, 4, 5);
+    cout << "Enter edges (u v):\n";
+    for (int i = 0; i < E; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        addEdge(adj, u, v);
+    }
 
     vector<bool> visited(V, false);
 
