@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Algorithms-20244103008/1st_LAB",
-      "program": "d:/Algorithms-20244103008/1st_LAB/build/Debug/outDebug",
+      "cwd": "d:/Algorithms-20244103008/6th_LAB",
+      "program": "d:/Algorithms-20244103008/6th_LAB/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
