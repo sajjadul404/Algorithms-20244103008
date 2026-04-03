@@ -25,7 +25,6 @@ void printMST(vector<int> &parent, vector<vector<int>> &graph, int V) {
 
     cout << "Minimum Cost Spanning Tree: " << cost << endl;
 }
-
 void primMST(vector<vector<int>> &graph) {
     int V = graph.size();
 
