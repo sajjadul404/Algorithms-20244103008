@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📚 Algorithms-20244103008
+# 📚 Algorithms
 
 <img src="https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white"/>
 <img src="https://img.shields.io/badge/Course-Algorithms-blueviolet?style=for-the-badge"/>
